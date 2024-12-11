@@ -1,3 +1,5 @@
+using System.Collections.ObjectModel;
+
 namespace UnoPaginateTester.Presentation;
 
 public partial class MainViewModel : ObservableObject
@@ -39,8 +41,8 @@ public partial class MainViewModel : ObservableObject
     }
 
     public IListFeed<DisplayItem> DataAuto =>
-    ListFeed.AsyncPaginated<DisplayItem>(async (PageRequest pageRequest, CancellationToken ct) =>
-        await GetDataAsync(pageSize: pageRequest.DesiredSize ?? 5, firstItemIndex: pageRequest.CurrentCount, ct));
+        ListFeed.AsyncPaginated<DisplayItem>(async (PageRequest pageRequest, CancellationToken ct) =>
+            await GetDataAsync(pageSize: pageRequest.DesiredSize ?? 5, firstItemIndex: pageRequest.CurrentCount, ct));
 
     public async ValueTask<IImmutableList<DisplayItem>> GetDataAsync(uint pageSize, uint firstItemIndex, CancellationToken ct)
     {

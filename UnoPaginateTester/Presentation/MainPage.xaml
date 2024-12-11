@@ -19,24 +19,30 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Spacing="16">
-        <TextBox Text="{Binding Name, Mode=TwoWay}"
-            PlaceholderText="Enter your name:" />
-        <Button Content="Go to Second Page"
-            AutomationProperties.AutomationId="SecondPageButton"
-            Command="{Binding GoToSecond}" />
-                <ListView
-                ItemsSource="{Binding DataAuto, Mode=TwoWay}"
-                SelectedItem="{Binding SelectedDisplayItem, Mode=TwoWay}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock VerticalAlignment="Center"
-                                       Text="{Binding Description}"
-                                       FontSize="{Binding DataContext.DefaultTextSize, ElementName=EnablePageRoot}"
-                                       Margin="10,0,0,0" />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackPanel>
+          
+            <TextBox Text="{Binding Name, Mode=TwoWay}"
+                PlaceholderText="Enter your name:" />
+          
+            <Button Content="Go to Second Page"
+                AutomationProperties.AutomationId="SecondPageButton"
+                Command="{Binding GoToSecond}" />
+          
+            <ListView
+                IsItemClickEnabled="True"
+                ItemsSource="{Binding DataAuto}"
+                SelectedItem="{Binding SelectedDisplayItem, Mode=TwoWay}"
+                Background="LightGray"
+                Height="200">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock VerticalAlignment="Center"
+                                    Text="{Binding Description}"
+                                    FontSize="{Binding DataContext.DefaultTextSize, ElementName=EnablePageRoot}"
+                                    Margin="10,0,0,0" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </Grid>
   </ScrollViewer>
 </Page>
