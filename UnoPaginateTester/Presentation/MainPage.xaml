@@ -6,7 +6,8 @@
       xmlns:utu="using:Uno.Toolkit.UI"
       xmlns:um="using:Uno.Material"
       NavigationCacheMode="Required"
-      Background="{ThemeResource BackgroundBrush}">
+      Background="{ThemeResource BackgroundBrush}"
+      x:Name="MainPageRoot">
   <ScrollViewer>
     <Grid utu:SafeArea.Insets="VisibleBounds">
       <Grid.RowDefinitions>
@@ -36,7 +37,6 @@
                     <DataTemplate>
                         <TextBlock VerticalAlignment="Center"
                                     Text="{Binding Description}"
-                                    FontSize="{Binding DataContext.DefaultTextSize, ElementName=EnablePageRoot}"
                                     Margin="10,0,0,0" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
