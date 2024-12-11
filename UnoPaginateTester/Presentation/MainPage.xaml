@@ -30,7 +30,6 @@
             <ListView
                 IsItemClickEnabled="True"
                 ItemsSource="{Binding DataAuto}"
-                SelectedItem="{Binding SelectedDisplayItem, Mode=TwoWay}"
                 Background="LightGray"
                 Height="200">
                 <ListView.ItemTemplate>

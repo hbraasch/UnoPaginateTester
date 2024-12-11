@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace UnoPaginateTester.Presentation;
 
@@ -30,6 +31,8 @@ public partial class MainViewModel : ObservableObject
         GoToSecond = new AsyncRelayCommand(GoToSecondView);
 
         DataItems = GenerateData();
+
+
     }
     public string? Title { get; }
 
@@ -37,6 +40,10 @@ public partial class MainViewModel : ObservableObject
 
     private async Task GoToSecondView()
     {
+        var pageRequest = new PageRequest { DesiredSize = 5, CurrentCount = 0 };
+        var data = await GetDataAsync(pageRequest.DesiredSize ?? 5, pageRequest.CurrentCount, CancellationToken.None);
+        Debug.WriteLine($"Fetched {data.Count} items.");
+
         await _navigator.NavigateViewModelAsync<SecondViewModel>(this, data: new Entity(Name!));
     }
 
